@@ -188,3 +188,6 @@
 2025-11-30 01:55:19,541 [INFO] [Epoch 2, Batch 160] avg loss: 0.5354, total samples processed: 6589
 2025-11-30 01:55:35,453 [INFO] [Epoch 2, Batch 170] avg loss: 0.5194, total samples processed: 6669
 2025-11-30 01:55:50,026 [INFO] [Epoch 2, Batch 180] avg loss: 0.5464, total samples processed: 6749
+2025-11-30 01:56:04,589 [INFO] [Epoch 2, Batch 190] avg loss: 0.5934, total samples processed: 6829
+2025-11-30 01:56:19,500 [INFO] [Epoch 2, Batch 200] avg loss: 0.5242, total samples processed: 6909
+2025-11-30 01:56:35,958 [INFO] [Epoch 2, Batch 210] avg loss: 0.4259, total samples processed: 6989
