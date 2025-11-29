@@ -26,8 +26,8 @@ def spectrogram_extraction(audio, display=False):
     # Z-score normalization
     spec = (spec - np.mean(spec)) / np.std(spec)
 
-    # Resize to 1024x1024
-    spec_resized = cv2.resize(spec, (1024, 1024), interpolation=cv2.INTER_LINEAR)
+    # Resize to 256x 256 for consistency
+    spec_resized = cv2.resize(spec, (256, 256), interpolation=cv2.INTER_LINEAR)
 
     # Optional display
     if display:

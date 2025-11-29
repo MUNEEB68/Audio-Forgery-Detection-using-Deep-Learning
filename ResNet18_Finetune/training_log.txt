@@ -1,0 +1,163 @@
+2025-11-30 01:33:36,960 [INFO] Starting training script...
+2025-11-30 01:33:36,990 [INFO] Loaded 53093 labels
+2025-11-30 01:33:36,991 [INFO] First 5 labels:
+2025-11-30 01:33:36,996 [INFO] HAD_train_fake_00000001.wav: 0
+2025-11-30 01:33:36,996 [INFO] HAD_train_fake_00000002.wav: 0
+2025-11-30 01:33:36,996 [INFO] HAD_train_fake_00000003.wav: 0
+2025-11-30 01:33:36,996 [INFO] HAD_train_fake_00000004.wav: 0
+2025-11-30 01:33:36,996 [INFO] HAD_train_fake_00000005.wav: 0
+2025-11-30 01:33:36,996 [INFO] Last 5 labels:
+2025-11-30 01:33:37,002 [INFO] HAD_train_real_00026550.wav: 1
+2025-11-30 01:33:37,002 [INFO] HAD_train_real_00026551.wav: 1
+2025-11-30 01:33:37,002 [INFO] HAD_train_real_00026552.wav: 1
+2025-11-30 01:33:37,002 [INFO] HAD_train_real_00026553.wav: 1
+2025-11-30 01:33:37,002 [INFO] HAD_train_real_00026554.wav: 1
+2025-11-30 01:33:37,050 [INFO] Training subset contains 2610 fake files and 2699 real files.
+2025-11-30 01:33:37,050 [INFO] DataLoader created successfully. 5309 samples will be used.
+2025-11-30 01:33:37,236 [INFO] ResNet(
+  (conv1): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+  (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (relu): ReLU(inplace=True)
+  (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+  (layer1): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (layer2): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (layer3): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (layer4): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+  (fc): Linear(in_features=512, out_features=1000, bias=True)
+)
+2025-11-30 01:33:37,238 [INFO] Model initialized on cpu. All layers are trainable.
+2025-11-30 01:33:37,239 [INFO] Loss function and optimizer initialized
+2025-11-30 01:33:37,239 [INFO] Starting training for 5 epochs...
+2025-11-30 01:33:37,239 [INFO] Epoch 1 started
+2025-11-30 01:34:12,013 [INFO] [Epoch 1, Batch 10] avg loss: 0.6849, total samples processed: 80
+2025-11-30 01:34:26,761 [INFO] [Epoch 1, Batch 20] avg loss: 0.6154, total samples processed: 160
+2025-11-30 01:34:40,705 [INFO] [Epoch 1, Batch 30] avg loss: 0.6792, total samples processed: 240
+2025-11-30 01:34:55,985 [INFO] [Epoch 1, Batch 40] avg loss: 0.7395, total samples processed: 320
+2025-11-30 01:35:10,935 [INFO] [Epoch 1, Batch 50] avg loss: 0.7203, total samples processed: 400
+2025-11-30 01:35:24,888 [INFO] [Epoch 1, Batch 60] avg loss: 0.6622, total samples processed: 480
+2025-11-30 01:35:39,553 [INFO] [Epoch 1, Batch 70] avg loss: 0.6433, total samples processed: 560
+2025-11-30 01:35:55,430 [INFO] [Epoch 1, Batch 80] avg loss: 0.7685, total samples processed: 640
+2025-11-30 01:36:10,382 [INFO] [Epoch 1, Batch 90] avg loss: 0.7413, total samples processed: 720
+2025-11-30 01:36:25,395 [INFO] [Epoch 1, Batch 100] avg loss: 0.6122, total samples processed: 800
+2025-11-30 01:36:40,326 [INFO] [Epoch 1, Batch 110] avg loss: 0.6301, total samples processed: 880
+2025-11-30 01:36:55,627 [INFO] [Epoch 1, Batch 120] avg loss: 0.7824, total samples processed: 960
+2025-11-30 01:37:09,969 [INFO] [Epoch 1, Batch 130] avg loss: 0.6123, total samples processed: 1040
+2025-11-30 01:37:25,226 [INFO] [Epoch 1, Batch 140] avg loss: 0.5837, total samples processed: 1120
+2025-11-30 01:37:39,858 [INFO] [Epoch 1, Batch 150] avg loss: 0.5954, total samples processed: 1200
+2025-11-30 01:37:54,773 [INFO] [Epoch 1, Batch 160] avg loss: 0.5395, total samples processed: 1280
+2025-11-30 01:38:09,433 [INFO] [Epoch 1, Batch 170] avg loss: 0.6315, total samples processed: 1360
+2025-11-30 01:38:23,978 [INFO] [Epoch 1, Batch 180] avg loss: 0.6570, total samples processed: 1440
+2025-11-30 01:38:38,637 [INFO] [Epoch 1, Batch 190] avg loss: 0.7062, total samples processed: 1520
+2025-11-30 01:38:53,868 [INFO] [Epoch 1, Batch 200] avg loss: 0.6435, total samples processed: 1600
+2025-11-30 01:39:08,677 [INFO] [Epoch 1, Batch 210] avg loss: 0.6362, total samples processed: 1680
+2025-11-30 01:39:23,461 [INFO] [Epoch 1, Batch 220] avg loss: 0.5799, total samples processed: 1760
+2025-11-30 01:39:39,325 [INFO] [Epoch 1, Batch 230] avg loss: 0.5396, total samples processed: 1840
+2025-11-30 01:39:54,090 [INFO] [Epoch 1, Batch 240] avg loss: 0.6910, total samples processed: 1920
+2025-11-30 01:40:08,958 [INFO] [Epoch 1, Batch 250] avg loss: 0.6016, total samples processed: 2000
+2025-11-30 01:40:22,837 [INFO] [Epoch 1, Batch 260] avg loss: 0.6667, total samples processed: 2080
+2025-11-30 01:40:37,849 [INFO] [Epoch 1, Batch 270] avg loss: 0.6134, total samples processed: 2160
+2025-11-30 01:40:53,415 [INFO] [Epoch 1, Batch 280] avg loss: 0.6360, total samples processed: 2240
+2025-11-30 01:41:12,313 [INFO] [Epoch 1, Batch 290] avg loss: 0.5420, total samples processed: 2320
+2025-11-30 01:41:30,138 [INFO] [Epoch 1, Batch 300] avg loss: 0.5884, total samples processed: 2400
+2025-11-30 01:41:48,116 [INFO] [Epoch 1, Batch 310] avg loss: 0.6962, total samples processed: 2480
+2025-11-30 01:42:03,458 [INFO] [Epoch 1, Batch 320] avg loss: 0.5490, total samples processed: 2560
+2025-11-30 01:42:24,645 [INFO] [Epoch 1, Batch 330] avg loss: 0.5421, total samples processed: 2640
+2025-11-30 01:42:40,764 [INFO] [Epoch 1, Batch 340] avg loss: 0.5985, total samples processed: 2720
+2025-11-30 01:42:55,844 [INFO] [Epoch 1, Batch 350] avg loss: 0.5608, total samples processed: 2800
+2025-11-30 01:43:11,516 [INFO] [Epoch 1, Batch 360] avg loss: 0.6372, total samples processed: 2880
+2025-11-30 01:43:26,767 [INFO] [Epoch 1, Batch 370] avg loss: 0.6437, total samples processed: 2960
+2025-11-30 01:43:41,945 [INFO] [Epoch 1, Batch 380] avg loss: 0.5196, total samples processed: 3040
+2025-11-30 01:43:55,614 [INFO] [Epoch 1, Batch 390] avg loss: 0.5231, total samples processed: 3120
+2025-11-30 01:44:09,233 [INFO] [Epoch 1, Batch 400] avg loss: 0.6147, total samples processed: 3200
+2025-11-30 01:44:23,005 [INFO] [Epoch 1, Batch 410] avg loss: 0.6339, total samples processed: 3280
+2025-11-30 01:44:36,579 [INFO] [Epoch 1, Batch 420] avg loss: 0.6376, total samples processed: 3360
+2025-11-30 01:44:49,968 [INFO] [Epoch 1, Batch 430] avg loss: 0.5794, total samples processed: 3440
+2025-11-30 01:45:03,483 [INFO] [Epoch 1, Batch 440] avg loss: 0.5503, total samples processed: 3520
+2025-11-30 01:45:17,570 [INFO] [Epoch 1, Batch 450] avg loss: 0.5403, total samples processed: 3600
+2025-11-30 01:45:31,595 [INFO] [Epoch 1, Batch 460] avg loss: 0.6376, total samples processed: 3680
+2025-11-30 01:45:45,831 [INFO] [Epoch 1, Batch 470] avg loss: 0.6410, total samples processed: 3760
+2025-11-30 01:46:01,765 [INFO] [Epoch 1, Batch 480] avg loss: 0.5637, total samples processed: 3840
+2025-11-30 01:46:17,007 [INFO] [Epoch 1, Batch 490] avg loss: 0.5749, total samples processed: 3920
+2025-11-30 01:46:32,076 [INFO] [Epoch 1, Batch 500] avg loss: 0.5894, total samples processed: 4000
+2025-11-30 01:46:47,690 [INFO] [Epoch 1, Batch 510] avg loss: 0.6184, total samples processed: 4080
+2025-11-30 01:47:03,378 [INFO] [Epoch 1, Batch 520] avg loss: 0.5886, total samples processed: 4160
+2025-11-30 01:47:18,859 [INFO] [Epoch 1, Batch 530] avg loss: 0.5990, total samples processed: 4240
+2025-11-30 01:47:36,094 [INFO] [Epoch 1, Batch 540] avg loss: 0.5846, total samples processed: 4320
+2025-11-30 01:47:51,314 [INFO] [Epoch 1, Batch 550] avg loss: 0.5288, total samples processed: 4400
+2025-11-30 01:48:08,049 [INFO] [Epoch 1, Batch 560] avg loss: 0.6465, total samples processed: 4480
+2025-11-30 01:48:23,795 [INFO] [Epoch 1, Batch 570] avg loss: 0.6165, total samples processed: 4560
+2025-11-30 01:48:38,771 [INFO] [Epoch 1, Batch 580] avg loss: 0.5409, total samples processed: 4640
+2025-11-30 01:48:54,371 [INFO] [Epoch 1, Batch 590] avg loss: 0.6631, total samples processed: 4720
