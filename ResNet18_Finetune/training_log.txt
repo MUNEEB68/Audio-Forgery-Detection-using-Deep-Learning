@@ -161,3 +161,30 @@
 2025-11-30 01:48:23,795 [INFO] [Epoch 1, Batch 570] avg loss: 0.6165, total samples processed: 4560
 2025-11-30 01:48:38,771 [INFO] [Epoch 1, Batch 580] avg loss: 0.5409, total samples processed: 4640
 2025-11-30 01:48:54,371 [INFO] [Epoch 1, Batch 590] avg loss: 0.6631, total samples processed: 4720
+2025-11-30 01:49:09,676 [INFO] [Epoch 1, Batch 600] avg loss: 0.5257, total samples processed: 4800
+2025-11-30 01:49:25,759 [INFO] [Epoch 1, Batch 610] avg loss: 0.6081, total samples processed: 4880
+2025-11-30 01:49:40,325 [INFO] [Epoch 1, Batch 620] avg loss: 0.5652, total samples processed: 4960
+2025-11-30 01:49:55,304 [INFO] [Epoch 1, Batch 630] avg loss: 0.6259, total samples processed: 5040
+2025-11-30 01:50:09,954 [INFO] [Epoch 1, Batch 640] avg loss: 0.4707, total samples processed: 5120
+2025-11-30 01:50:24,416 [INFO] [Epoch 1, Batch 650] avg loss: 0.6116, total samples processed: 5200
+2025-11-30 01:50:38,866 [INFO] [Epoch 1, Batch 660] avg loss: 0.6108, total samples processed: 5280
+2025-11-30 01:50:46,005 [INFO] Epoch 1 completed, total samples processed so far: 5309
+2025-11-30 01:50:46,006 [INFO] Epoch 2 started
+2025-11-30 01:51:26,320 [INFO] [Epoch 2, Batch 10] avg loss: 0.4986, total samples processed: 5389
+2025-11-30 01:51:41,419 [INFO] [Epoch 2, Batch 20] avg loss: 0.4509, total samples processed: 5469
+2025-11-30 01:51:56,231 [INFO] [Epoch 2, Batch 30] avg loss: 0.5908, total samples processed: 5549
+2025-11-30 01:52:11,540 [INFO] [Epoch 2, Batch 40] avg loss: 0.4543, total samples processed: 5629
+2025-11-30 01:52:27,835 [INFO] [Epoch 2, Batch 50] avg loss: 0.4263, total samples processed: 5709
+2025-11-30 01:52:44,167 [INFO] [Epoch 2, Batch 60] avg loss: 0.4661, total samples processed: 5789
+2025-11-30 01:53:00,218 [INFO] [Epoch 2, Batch 70] avg loss: 0.5431, total samples processed: 5869
+2025-11-30 01:53:15,589 [INFO] [Epoch 2, Batch 80] avg loss: 0.4879, total samples processed: 5949
+2025-11-30 01:53:30,023 [INFO] [Epoch 2, Batch 90] avg loss: 0.5564, total samples processed: 6029
+2025-11-30 01:53:44,973 [INFO] [Epoch 2, Batch 100] avg loss: 0.5762, total samples processed: 6109
+2025-11-30 01:54:00,414 [INFO] [Epoch 2, Batch 110] avg loss: 0.4699, total samples processed: 6189
+2025-11-30 01:54:15,657 [INFO] [Epoch 2, Batch 120] avg loss: 0.5309, total samples processed: 6269
+2025-11-30 01:54:32,212 [INFO] [Epoch 2, Batch 130] avg loss: 0.4655, total samples processed: 6349
+2025-11-30 01:54:49,323 [INFO] [Epoch 2, Batch 140] avg loss: 0.5321, total samples processed: 6429
+2025-11-30 01:55:04,880 [INFO] [Epoch 2, Batch 150] avg loss: 0.5481, total samples processed: 6509
+2025-11-30 01:55:19,541 [INFO] [Epoch 2, Batch 160] avg loss: 0.5354, total samples processed: 6589
+2025-11-30 01:55:35,453 [INFO] [Epoch 2, Batch 170] avg loss: 0.5194, total samples processed: 6669
+2025-11-30 01:55:50,026 [INFO] [Epoch 2, Batch 180] avg loss: 0.5464, total samples processed: 6749
