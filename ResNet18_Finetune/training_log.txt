@@ -1,0 +1,2 @@
+#deleted the data in this file by mistake
+#training loss went from 0.8 in first epoch to 0.1 in last
