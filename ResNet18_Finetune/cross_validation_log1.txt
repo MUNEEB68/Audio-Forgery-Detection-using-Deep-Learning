@@ -1,0 +1,17 @@
+2025-12-17 23:36:31,860 [INFO] Starting cross-validation script...
+2025-12-17 23:36:31,872 [INFO] Loaded 17824 labels
+2025-12-17 23:36:31,897 [INFO] Cross-validation subset: 17824 samples
+2025-12-17 23:36:31,897 [INFO] Fake samples: 8910, Real samples: 8914
+2025-12-17 23:38:22,806 [INFO] Batch 10: Running Accuracy = 68.75%
+2025-12-17 23:39:51,004 [INFO] Batch 20: Running Accuracy = 64.38%
+2025-12-17 23:41:11,546 [INFO] Batch 30: Running Accuracy = 65.42%
+2025-12-17 23:42:33,373 [INFO] Batch 40: Running Accuracy = 67.50%
+2025-12-17 23:43:59,755 [INFO] Batch 50: Running Accuracy = 68.75%
+2025-12-17 23:45:21,609 [INFO] Batch 60: Running Accuracy = 68.75%
+2025-12-17 23:46:56,680 [INFO] Batch 70: Running Accuracy = 68.57%
+2025-12-17 23:48:34,744 [INFO] Batch 80: Running Accuracy = 67.34%
+2025-12-17 23:50:15,528 [INFO] Batch 90: Running Accuracy = 67.50%
+2025-12-17 23:51:55,042 [INFO] Batch 100: Running Accuracy = 67.25%
+2025-12-17 23:53:32,726 [INFO] Batch 110: Running Accuracy = 67.27%
+2025-12-17 23:55:05,467 [INFO] Batch 120: Running Accuracy = 67.92%
+2025-12-17 23:56:43,770 [INFO] Batch 130: Running Accuracy = 67.98%

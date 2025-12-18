@@ -1,7 +1,5 @@
-# training.py 
 import sys
 import os
-import logging
 import random
 import numpy as np
 import torch
@@ -15,6 +13,7 @@ src_path = r"C:\Users\munee\Desktop\audio forgery detection\src"
 sys.path.append(src_path)
 from spectrogram_extraction import spectrogram_extraction
 
+
 # ================= Dataset ================= #
 class AudioDataset(Dataset):
     def __init__(self, audio_folder, label_dict, subset_ratio=1.0):
@@ -24,7 +23,6 @@ class AudioDataset(Dataset):
 
         random.shuffle(self.files)
 
-        # subset
         if subset_ratio < 1.0:
             subset_size = int(len(self.files) * subset_ratio)
             self.files = self.files[:subset_size]
@@ -40,91 +38,96 @@ class AudioDataset(Dataset):
         file_path = os.path.join(self.audio_folder, file_name)
 
         audio, sr = librosa.load(file_path, sr=16000)
-
         spec = spectrogram_extraction(audio)
 
-        # 3-channel
+        # 3-channel spectrogram
         spec = np.stack([spec, spec, spec], axis=0)
         spec = torch.tensor(spec, dtype=torch.float32)
 
         label = torch.tensor(self.label_dict[file_name], dtype=torch.long)
-        return spec, label
+        return spec, label, file_name
 
-# loading labels
+
+# ================= Load labels ================= #
 def load_labels(label_file):
     label_dict = {}
     with open(label_file, 'r') as f:
         for line in f:
-            line = line.strip()
-            if line == "":
+            if line.strip() == "":
                 continue
-            parts = line.split()
-            label_dict[parts[0]] = int(parts[1])
+            fname, lbl = line.split()
+            label_dict[fname] = int(lbl)
     return label_dict
 
-######## MAIN ########
-if __name__ == "__main__":
-    logging.basicConfig(
-        filename='cross_validation_log1.txt',
-        level=logging.INFO,
-        format='%(asctime)s [%(levelname)s] %(message)s',
-        filemode='w'
-    )
 
-    logging.info("Starting cross-validation script...")
+# ================= MAIN ================= #
+if __name__ == "__main__":
+
+    print("\n===== DEMO TESTING SCRIPT =====\n")
 
     # Load labels
-    label_file = r"cross_validation_target_labels.txt"
+    label_file = r"test_target_labels.txt"
     label_dict = load_labels(label_file)
-    logging.info(f"Loaded {len(label_dict)} labels")
+    print(f"Loaded {len(label_dict)} labels")
 
-    # Paths and settings
-    cross_validation_audio_folder = r"D:\data\HAD\HAD_dev\dev\conbine"
-    subset_ratio = 1
+    test_audio_folder = r"D:\data\HAD\HAD_test\test\test"
     batch_size = 8
     save_folder = r"C:\Users\munee\Desktop\audio forgery detection\ResNet18_Finetune"
 
-    # Dataset & DataLoader
-    dataset = AudioDataset(cross_validation_audio_folder, label_dict, subset_ratio=subset_ratio)
-    logging.info(f"Cross-validation subset: {len(dataset)} samples")
-    logging.info(f"Fake samples: {dataset.fake_count}, Real samples: {dataset.real_count}")
+    dataset = AudioDataset(test_audio_folder, label_dict)
+    print(f"Total samples in dataset: {len(dataset)}")
+    print(f"Fake samples: {dataset.fake_count}, Real samples: {dataset.real_count}\n")
 
-    # IMPORTANT: num_workers=0 for Windows
     loader = DataLoader(dataset, batch_size=batch_size, shuffle=True, num_workers=0)
 
     # Load model
     device = "cuda" if torch.cuda.is_available() else "cpu"
+    print(f"Using device: {device}")
+
     model = models.resnet18(pretrained=False)
-    num_ftrs = model.fc.in_features
-    model.fc = nn.Linear(num_ftrs, 2)
+    model.fc = nn.Linear(model.fc.in_features, 2)
 
     checkpoint_path = os.path.join(save_folder, "resnet18_epoch_9.pth")
     model.load_state_dict(torch.load(checkpoint_path, map_location=device))
 
-    model = model.to(device)
-    #set model to evaluation mode
+    model.to(device)
     model.eval()
 
-    # Evaluation
+    print("\nModel loaded successfully.")
+    print("\n===== RUNNING DEMO (5 BATCHES ONLY) =====\n")
+
     correct = 0
     total = 0
+    max_demo_batches = 10
 
     with torch.no_grad():
-        for batch_idx, (inputs, labels) in enumerate(loader):
+        for batch_idx, (inputs, labels, file_names) in enumerate(loader):
+
+            if batch_idx == max_demo_batches:
+                break  # STOP AFTER 5 BATCHES
+
             inputs, labels = inputs.to(device), labels.to(device)
             outputs = model(inputs)
             predicted = torch.argmax(outputs, dim=1)
 
-            total += labels.size(0)
-            correct += (predicted == labels).sum().item()
-            # Log accuracy every 10 batches
-            if (batch_idx + 1) % 10 == 0:
-               batch_accuracy = 100 * correct / total
-               logging.info(f"Batch {batch_idx + 1}: Running Accuracy = {batch_accuracy:.2f}%")
+            batch_correct = (predicted == labels).sum().item()
+            batch_total = labels.size(0)
 
-    accuracy = 100 * correct / total
-    print(f'Cross-Validation Accuracy: {accuracy:.2f}%')
-    logging.info(f'Cross-Validation Accuracy: {accuracy:.2f}%')
+            correct += batch_correct
+            total += batch_total
 
-    print("Cross-validation completed.")
-    logging.info("Cross-validation completed.")
+            batch_acc = 100 * batch_correct / batch_total
+
+            print(f"--- Batch {batch_idx + 1} ---")
+            for fname, t, p in zip(file_names, labels.cpu(), predicted.cpu()):
+                label_name_t = "Fake" if t.item() == 0 else "Real"
+                label_name_p = "Fake" if p.item() == 0 else "Real"
+                print(f"File: {fname} | Target: {label_name_t} | Predicted: {label_name_p}")
+
+            print(f"Batch Accuracy: {batch_acc:.2f}%\n")
+
+    final_acc = 100 * correct / total
+    print("===== DEMO RESULTS =====")
+    print(f"Total samples processed: {total}")
+    print(f"Final Demo Accuracy: {final_acc:.2f}%")
+    print("Demo testing completed.\n")
